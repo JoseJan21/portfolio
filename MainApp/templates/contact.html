@@ -1,0 +1,30 @@
+{% block content %}
+    <a name='contacto'></a>
+    <section class='contProyectos margin-top'>
+        <div class="center padded-contact-0">
+            <div class="content">
+                <div class="row vert-pad">
+                    <div class="left padded-contact">
+                        <h1>Ahora o nunca!!! Trabajemos juntos</h1>
+                        {% comment %} <p>Mi habilidad para aprender rápidamente, mi dedicación y pasión por el desarrollo web pueden aportar un gran valor a cualquier empresa. Creo que mi disposición para trabajar en equipo y aprender de los demás puede ser una ventaja en cualquier ambiente laboral, y estoy comprometido a establecer una relación duradera y fructífera para alcanzar nuestros objetivos juntos. Estoy emocionado por la oportunidad de aprender y crecer profesionalmente</p> {% endcomment %}
+                        <p>Daré mi mejor esfuerzo! para aprender, aportar valor a la empreza y que tengamos una muy buena relacion a largo plazo</p>
+                    </div>
+                    <div class="right padded-contact">
+                        <form class='contact-form' method="post" action="{% url 'email' %}">
+                            {% csrf_token %}
+                            <input class="card" name='name' placeholder='Nombre' required />
+                            <input class="card" name='email' placeholder='E-mail' required type='email' />
+                            <input class="card" name='subject' placeholder='Asunto' required />
+                    
+                            <textarea class="card" name='message' placeholder='Mensaje' required minlength=10></textarea>
+                            <button class="btn" type="submit">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+

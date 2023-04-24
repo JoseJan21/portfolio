@@ -1,0 +1,40 @@
+{% extends 'todolist/layout.html' %}
+{% block title %} Inicio {% endblock %}
+
+{% block content %}
+
+{% load static %}
+<section class='section-1'>
+    <div class='title'>
+        <h1 class="center">Lista de tareas</h1>
+    </div>
+    <h1>Bienvenido, {{ user.username }}!</h1>
+    <div>
+        <div class='tareas center'>
+            {% for data in db_data %}
+
+                <label for="mi_checkbox_{{ data.id }}">
+                        
+                        <div class="card-tareas">
+                            
+                            <div class="card-content">
+                                <h5 class="card-title">{{ data.subject }}</h5>
+                                <p class="card-text">{{ data.description }}</p>
+                                <a href="{% url 'update_form' data.id %}" class="btn-update">Actualizar</a>
+                                <a href="{% url 'delete' data.id %}" class="btn-delete">Eliminar</a>
+                            </div>
+
+                            <div class="card-check">
+                                <input type="checkbox" class="check" id="mi_checkbox_{{ data.id }}" name="mi_checkbox_{{ data.id }}" {% if data.is_done %}checked{% endif %} />
+                                <span class='span-check'></span>
+                            </div>
+                            
+                        </div>
+                </label>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+{% endblock%}

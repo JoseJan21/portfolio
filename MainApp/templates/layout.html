@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="icon" href="{% static 'media/fondo.png' %}"> 
+    
+    {% comment %} fuente del texto {% endcomment %}
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/31abbc38b6.js" crossorigin="anonymous"></script>
+    <title>
+        {% block title %}
+        
+        {% endblock %}
+        | Jan Jose
+    </title>
+</head>
+<body id='home'>
+    {% comment %} <div class="container"> {% endcomment %}
+        <header class="blur">
+
+            <div class="logo">José Jan Web</div>
+                {% comment %} boton {% endcomment %}
+            <nav class='nav'>
+                <div id="main-conteiner">
+                    <div id="hamburger" class='icono-menu'>
+                        <button class="ham">
+                            <span class="top-line"></span>
+                            <span class="middle-line"></span>
+                            <span class="bottom-line"></span>
+                        </button>
+                    </div>
+                </div>
+                {% comment %} menu {% endcomment %}
+                <div>
+                    <ul class='enlaces-menu'>
+                        <li><a class='efect-hover' href="{% url 'home' %}#home">Inicio</a></li>
+                        <li><a class='efect-hover' href="{% url 'home' %}#about">Acerca de mi</a></li>
+                        <li><a class='efect-hover' href="{% url 'home' %}#projects">Proyectos</a></li>
+                        <li><a class='efect-hover' href="{% url 'home' %}#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <script>
+            const ham = document.querySelector('.ham');
+            const enlaces = document.querySelector('.enlaces-menu');
+            const nav = document.querySelector('#hamburger button');
+            const a = document.querySelector('.nav-menu-link_active')
+
+            nav.addEventListener('click', (e) => {
+                nav.classList.toggle('open');
+                if (enlaces.className === 'enlaces-menu activado') {
+                  enlaces.className = 'enlaces-menu oculto';
+                } else {
+                  enlaces.className = 'enlaces-menu activado';
+                }
+              });
+
+            const links = document.querySelectorAll('.enlaces-menu a');
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    nav.classList.remove('open');
+                    enlaces.className = 'enlaces-menu oculto';
+                    
+                    enlaces.classList.remove('activado');
+                });
+            });
+        </script>
+        
+        {% block content %}
+
+        {% endblock %}
+        
+        <div class='footer'>
+            <div class='center full-width'>
+                <div class='row'>
+                    <h3>Contáctame :)</h3>
+                </div>
+            </div>
+            <div class='center full-width'>
+                <div class='row'>
+                    <p>O tambien puedes seguirme aquí</p>
+                </div>
+            </div>
+            <div class='center full-width social-links'>
+                <div class='row'>
+                    <a target='_blank' href='https://www.linkedin.com/in/jos%C3%A9-jan-0583601b9/'><img class='social' width=30 src='{% static 'media/linkedin.png' %}'></a>
+                </div>
+                <div class='row'>
+                    <a target='_blank' href='https://github.com/JoseJan21'><img class='social' width=30 src='{% static 'media/icon-github.png' %}'></a>
+                </div>
+                <div class='row'>
+                    <a target='_blank' href='mailto:josejan303@gmail.com'><img class='social' width=30 src='{% static 'media/icon-gmail.png' %}'></a>
+                </div>
+            </div>
+            <div class='made-width'>
+                <div class='row'>
+                    <p>Hecho con ❤️ por José Jan</p>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

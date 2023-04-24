@@ -1,0 +1,28 @@
+{% extends 'todolist/layout.html' %}
+
+{% block title %}
+   Registrate
+{% endblock %}
+    
+{% block content %}
+<section class='section-1'>
+        <div class="form-container">
+            <div class='content-title'>
+                <h2 class="title center">Registrate</h2>
+            </div>
+            
+            {{register_form.errors}}
+
+            <form class='contact-form' method="post" action="">
+                {% csrf_token %}
+                <input class="card" name='username' placeholder='Nombre de usuario *' required />
+                <input class="card" name='email' placeholder='E-mail *' required type='email' />
+                <input class="card" type="password" name='password1' placeholder='Contraseña *' required />
+                <input class="card" type="password" name='password2' placeholder='Confirmar Contraseña *' required />
+
+                <input class="btn" type="submit" value="Registrarse" />
+            </form>
+            
+        </div>
+</section>
+{% endblock%}

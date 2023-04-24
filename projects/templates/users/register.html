@@ -1,0 +1,33 @@
+{% extends 'pagina/layout.html' %}
+
+{% block title %}
+   {{title}}
+{% endblock %}
+    
+{% block content %}
+{% if messages %}
+        {% for message in messages %}
+            <div class='alert alert-warning'>
+                {{message}}
+            </div>
+        {% endfor %}
+{% endif %}
+    <div class="form-container">
+        <div class='content-title'>
+            <h2 class="title h2-center">{{title}}</h2>
+        </div>
+        
+        {{register_form.errors}}
+
+        <form class='contact-form' method="post" action="">
+            {% csrf_token %}
+            <input class="card" name='username' placeholder='Nombre de usuario *' required />
+            <input class="card" name='email' placeholder='E-mail *' required type='email' />
+            <input class="card" type="password" name='password1' placeholder='Contraseña *' required />
+            <input class="card" type="password" name='password2' placeholder='Confirmar Contraseña *' required />
+
+            <input class="btn" type="submit" value="Registrarse" />
+        </form>
+        
+    </div>
+{% endblock%}

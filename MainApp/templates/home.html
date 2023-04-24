@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+    {% load static %}
+    <section id="fondo" class='flex-center'>
+        <section class='pad-home'>
+            <div class='row'>
+                <div class="vert-pad mi">
+                    <h1 class="one-0 ">¡Hola! Soy José Jan
+                        Desarrollador Web</h1>
+                    <p class=''>Construyo aplicaciones  en Python y sus frameworks Django y Flask, así como en bases de datos relacionales. Mi pasión es construir aplicaciones y sitios web dinámicos que satisfagan las necesidades de las personas.</p>
+                    <a href="#contacto" class="btn-1">Contáctame</a>
+                </div>
+                <div class="">
+                    <img class='one' src={% static 'media/one.png' %}/>
+                </div>
+            </div>
+        </section>
+        <section>
+            {% include 'section-first.html' %}
+            {% include 'tecnologias.html' %}
+            {% include 'section-second.html' %}
+            {% include 'contact.html' %}
+        </section>
+    </section>
+{% endblock %}

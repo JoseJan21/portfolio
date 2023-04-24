@@ -1,0 +1,61 @@
+
+{% block content %}
+{% load static %}
+
+    <a name='projects'></a>
+
+    
+    <div class="content padded">
+        <div class="vert left padded">
+            <div class="padded">
+                <h1>Te invito a que eches un vistazo a algunos de mis proyectos:</h1>
+            </div>
+        </div>
+    </div>
+
+    <section class='contProyectos'>
+        <div class="contenedor" id="contProyecto">
+
+            <a class='projecto'target='_blank' href="{% url 'list_articles' %}">
+                <div class="proyecto" id="proyecto">
+                    <img class="image-project" src={% static 'media/blog.png' %}>
+                    <div class="description">
+                        <p class="titulo">Blog</p>
+                        <p class="tecnologias">
+                            Tecnologias:
+                            <span>Html, Css, Python, Django</span>
+                        </p>
+                    </div>
+                </div>
+            </a>
+            
+            <a class='projecto'target='_blank' href="{% url 'todolist' %}">
+                <div class="proyecto" id="proyecto">
+                    <img class="image-project" src={% static 'media/kail0.png' %}>
+                    <div class="description">
+                        <p class="titulo">Lista de tareas</p>
+                        <p class="tecnologias">
+                            Tecnologias:
+                            <span>Html, Css, Python, Django</span>
+                        </p>
+                    </div>
+                </div>
+            </a>
+
+            <a class='projecto'target='_blank' href="{% url 'generator' %}">
+                <div class="proyecto" id="proyecto">
+                    <img class="image-project" src={% static 'media/image.png' %}>
+                    <div class="description">
+                        <p class="titulo">Generador de claves</p>
+                        <p class="tecnologias">
+                            Tecnologias:
+                            <span>Html, Css, Python, Django</span>
+                        </p>
+                    </div>
+                </div>
+            </a>
+            
+        </div>
+        
+    </section>
+{% endblock %}

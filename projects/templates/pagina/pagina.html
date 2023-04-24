@@ -1,0 +1,40 @@
+{% extends 'pagina/layout.html' %}
+
+{% block title %}
+    Acerca de esta web
+{% endblock %}
+
+{% block content %}
+{%load static%}
+    {% comment %} {% if messages %}
+        {% for message in messages %}
+            <div class='alert alert-success'>
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% if user.email %}
+        <h2 class="title">Bienvenido, {{request.user.first_name}}</h2>
+        <p>{{user.email}}</p>
+    {% else %}
+        <h2 class="title"></h2>
+    {% endif %} {% endcomment %}
+            <div class='content-about'>
+                <h2 class="title">Descripción de la web</h2>
+                <p>Este es un sitio web con características similares a un blog. Utiliza Python y el framework Django para su desarrollo y ofrece una interfaz de administrador de Django que permite crear y gestionar diferentes vistas en la aplicación, articulos, categorias y usuarios</p>
+                <div class="image-about">
+                    <img src="{% static 'media/panel-de-control.png' %}" />
+                </div>
+                <p>Además, la aplicación cuenta con una sección de creación de artículos, lo que permite a los usuarios publicar contenido en el sitio web</p>
+                <div class="image-about">
+                    <img src="{% static 'media/crear-articulo.png' %}" />
+                </div>
+                <p>También tiene una sección de registro y login, lo que permite a los usuarios registrarse y acceder a su cuenta para crear sus propios artículos. Y para aquellos que no quieran registrarse hay usuarios de prueba, listos para probar la web.</p>
+                <div class="image-about">
+                    <img src="{% static 'media/register.png' %}" />
+                    <img src="{% static 'media/login.png' %}" />
+                </div>
+                <p>En resumen, esta aplicación es un ejemplo de una aplicación web dinámica y personalizable, que combina las características de un blog con la funcionalidad de una interfaz de administrador y seguridad de usuario.</p>
+            </div>
+
+{% endblock%}

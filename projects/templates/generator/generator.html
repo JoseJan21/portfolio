@@ -1,0 +1,56 @@
+{% extends 'generator/layout.html' %}
+
+{% block content %}
+    <div class="box form-container">
+        <form action="{% url 'password' %}">
+            <h1>Generador de Claves</h1>
+            <label for="length">Selecciona la longitud de tu contraseña:</label>
+    
+            <select class='length' name="length" id="length">
+                <option value="6">6 characteres</option>
+                <option value="7">7 characteres</option>
+                <option value="8">8 characteres</option>
+                <option value="9">9 characteres</option>
+                <option value="10">10 characteres</option>
+                <option value="11">11 characteres</option>
+                <option value="12">12 characteres</option>
+                <option value="13">13 characteres</option>
+                <option value="14">14 characteres</option>
+                <option value="15">15 characteres</option>
+                <option value="16">16 characteres</option>
+                <option value="17">17 characteres</option>
+                <option value="18">18 characteres</option>
+                <option value="19">19 characteres</option>
+                <option value="20">20 characteres</option>
+                <option value="21">21 characteres</option>
+                <option value="22">22 characteres</option>
+                <option value="23">23 characteres</option>
+                <option value="24">24 characteres</option>
+                <option value="25">25 characteres</option>
+                <option value="26">26 characteres</option>
+                <option value="27">27 characteres</option>
+                <option value="28">28 characteres</option>
+                <option value="29">29 characteres</option>
+                <option value="30">30 characteres</option>
+            </select>
+
+            <label class='checkbox-conteiner' for="uppercase">Mayuscula
+                <input type="checkbox" name="uppercase" id="uppercase" value='Mayuscula'>
+                <i></i>
+            </label>
+
+            <label class='checkbox-conteiner' for="special">Carecteres especiales
+                <input type="checkbox" name="special" id="special" value='special'>
+                <i></i>
+            </label>
+
+            <label class='checkbox-conteiner' for="numbers">Numeros
+                <input type="checkbox" name="numbers" id="numbers" value='numbers'>
+                <i></i>
+            </label>
+
+            <button class='btn-primary'>Generar contraseña</button>
+        </form>
+    </div>
+{% endblock%}
+

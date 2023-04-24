@@ -1,0 +1,39 @@
+{% extends 'pagina/layout.html' %}
+
+{% block title %}
+   {{title}}
+{% endblock %}
+    
+{% block content %}
+    <div class='login-box'>
+        <div class="form-container login-box-1">
+            <div class='content-title'>
+                <h2 class="title h2-center">Iniciar sesión</h2>
+            </div>
+            
+            {{register_form.errors}}
+
+            <form class='contact-form' method='post' action="">
+                {% csrf_token %}
+            
+                <input class='card' type="text" name="username" placeholder='Nombre de usuario *' required />
+
+                <input class='card' type="password" name="password" placeholder='Contraseña *' required />
+
+                <input class="btn" type="submit" value="Iniciar sesión" />
+
+                <a class='register' href="{% url 'register' %}">Registrarse</a>
+            </form>
+        </div>
+        <div class='login-box-2'>
+            <h3>Usuarios de prueba</h3>
+            <p>Los siguientes usuarios estan creados para que puedas probar esta web.</p>
+            <p>Usuario 1: janjose</p>
+            <p>Contraseña: 9VitCf5kK</p>
+            <p>Usuario 2: kail</p>
+            <p>Contraseña: mSttwd4HM</p>
+            <p>Usuario 3: sax</p>
+            <p>Contraseña: H9E5MRFXz</p>
+        </div>
+    </div>
+{% endblock%}

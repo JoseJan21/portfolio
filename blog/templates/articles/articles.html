@@ -1,0 +1,54 @@
+{% if messages %}
+    {% for message in messages %}
+        <div class='alert alert-success'>
+            {{message}}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<div class='user'>
+    {% if user.email %}
+        <p></p>
+    {% else %}
+        <h2 class="title"></h2>
+    {% endif %}
+</div>
+<div class="article-item">
+   
+    {% for article in articles %}   
+        <article class="card">  
+                       
+            <div class="data card-article">
+                <a href="{% url 'article' article.id %}">  
+                    <h2>{{article.title}}</h2>                 
+                        <p>
+                            {% for category in article.categories.all %}
+                                {{category.name}}
+                                {% if forloop.counter < article.categories.all|length %}
+                                    {{'-'}}
+                                {% endif %}
+                            {% endfor %}
+                        </p>
+                    <span class="date">
+                        {{article.user}}
+                        |
+                        {{article.created_at}}
+                    
+                    </span>
+                    <p class="content">{{article.content}}</p>
+
+                    {% if article.image != 'null' and article.image.url|length >= 1  %}
+                        <div class="image">
+                            <img src="{{article.image.url}}" />
+                        </div>
+                    {% endif %}
+                    
+                </a> 
+            </div>
+            
+            <div class="clearfix"></div>                   
+        </article>
+
+        
+    {% endfor %}
+</div>

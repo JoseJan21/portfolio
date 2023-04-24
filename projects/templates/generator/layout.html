@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="icon" href="{% static 'media/fondo.png' %}"> 
+    <link rel="stylesheet" href="{% static 'generator.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/31abbc38b6.js" crossorigin="anonymous"></script>
+    <title>
+    {% block title %}
+    Generador de Claves
+    {% endblock %}
+    </title>
+</head>
+<body  id='fondo'>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

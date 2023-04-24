@@ -1,0 +1,24 @@
+{% extends 'todolist/layout.html' %}
+
+{% block content %}
+  <h1>Tareas</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Fecha de creación</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for task in tasks %}
+        <li>
+          <input type="checkbox" name="completed_tasks" value="{{ task.id }}" {% if task.completed %}checked{% endif %}>
+          <td>{{ task.nombre }}</td>
+          <td>{{ task.descripcion }}</td>
+          <td>{{ task.fecha_creacion }}</td>
+        </li>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

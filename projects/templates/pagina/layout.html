@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'pagina.css' %}">
+    {% comment %} modo oscuro y claro {% endcomment %}
+    <link rel="stylesheet" media='(prefers-color-scheme: light)' href="{% static 'pagina-light.css' %}">
+    <link rel="stylesheet" media='(prefers-color-scheme: dark)' href="{% static 'pagina-dark.css' %}">
+    <link rel="icon" href="{% static 'media/fondo.png' %}"> 
+    <script type="module" src="https://unpkg.com/dark-mode-toggle"></script>
+    {% comment %} fuente del texto {% endcomment %}
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/31abbc38b6.js" crossorigin="anonymous"></script>
+    <title>
+        {% block title %}
+            
+        {% endblock %} | Blog
+    </title>
+</head>
+<body>
+
+    <header>
+            <div id="logotipo">
+                <img src="{% static 'media/data.png' %}" />
+                {% comment %} <h1>Blog</h1> {% endcomment %}
+            </div>
+
+            <div id="main-conteiner">
+                <div id="hamburger" class='icono-menu'>
+                    <button class="ham">
+                        <span class="top-line"></span>
+                        <span class="middle-line"></span>
+                        <span class="bottom-line"></span>
+                    </button>
+                </div>
+            </div>
+            <div class='toggle-dark'>
+                <dark-mode-toggle
+                    id="dark-mode-toggle-1"
+                    legend=""
+                    appearance="toggle"
+                    permanent="true"
+                    light="Oscuro"
+                    dark="Claro"
+                    > 
+                </dark-mode-toggle>
+            </div>
+
+            <nav>
+                <ul class='enlaces-menu'>
+                        <li><a class='efect-hover' href="{% url 'list_articles' %}">Inicio</a></li>
+
+                        
+                        <li>
+                            <a class='efect-hover' href="">Categorías ▼</a>
+                            <ul>
+                                {% for category in categories %}
+                                    <li><a class='efect-hover' href="{% url 'category' category.0 %}">{{category.1}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                            
+                        {% for page in pages %}
+                            <li><a class='efect-hover' href="{% url 'page' page.2 %}">{{page.1}}</a></li>
+                        {% endfor %}
+                        <li><a class='efect-hover' href="{% url 'web' %}">Acerca de esta web</a></li>
+                        
+                        <li><a class='efect-hover' href="{% url 'create_article' %}">Crear articulos</a></li>
+                        
+                        {% if user.email %}
+                        <li><a class='efect-hover-logout' href="{% url 'logout' %}">Cerrar sesión</a></li>
+                        {% else %}
+                            <li><a class='efect-hover' href="{% url 'register' %}">Registrarse</a></li>
+                            <li><a class='efect-hover' href="{% url 'login' %}">Iniciar sesión</a></li>
+                        {% endif %}
+                </ul>
+            </nav>
+
+    </header>
+    <script>
+        const ham = document.querySelector('.ham');
+        const enlaces = document.querySelector('.enlaces-menu');
+        const nav = document.querySelector('#hamburger button');
+        const a = document.querySelector('.nav-menu-link_active')
+
+        nav.addEventListener('click', (e) => {
+            nav.classList.toggle('open');
+            if (enlaces.className === 'enlaces-menu activado') {
+              enlaces.className = 'enlaces-menu oculto';
+            } else {
+              enlaces.className = 'enlaces-menu activado';
+            }
+          });
+
+        const links = document.querySelectorAll('.enlaces-menu a');
+        links.forEach(link => {
+            link.addEventListener('click', (e) => {
+                nav.classList.remove('open');
+                enlaces.className = 'enlaces-menu oculto';
+                
+                enlaces.classList.remove('activado');
+            });
+        });
+    </script>
+
+
+    <div id="content">
+        <div class='box'>
+            {% block content %}
+                
+            {% endblock %}
+        </div>
+    </div>
+    
+<footer>
+    Desarrollador python &copy; Jan Jose Web
+</footer> 
+</body>
+</html>

@@ -1,0 +1,12 @@
+{% extends 'pagina/layout.html' %}
+
+{% block title %} {{ category.name }} {% endblock %}
+
+{% block content %}
+    
+    <div class='content-title'>
+        <h1 class="title h2-center">{{category.name}}</h1>
+    </div>
+    {% comment %} <p>{{category.description}}</p> {% endcomment %}
+        {% include 'articles/articles.html' %}
+{% endblock%}

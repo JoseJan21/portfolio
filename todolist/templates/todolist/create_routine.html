@@ -1,0 +1,51 @@
+{% extends 'todolist/layout.html' %}
+
+{% block title %}
+   Crear tareas
+{% endblock %}
+    
+{% block content %}
+{% load static %}
+
+    <section class='section-1'>
+        <div class="form-container">
+            <div class='section-1'>
+                <h2 class="title center">Subir Tareas</h2>
+            </div>
+
+                {% if update %}
+                <div class='box-routines'>
+                    <form class="form-update" method="post" action="{% url 'update' %}">
+                        {% csrf_token %}
+                        <div>
+                            <label for="subject" class="form-label">Título</label>
+                            <input type="text" value="{{ update.subject }}" class="form-control" name="subject" id="subject" aria-describedby="emailHelp" />
+                        </div>
+                        <div>
+                            <label for="description" class="form-label">Descripción</label>
+                            <textarea type="text" name="description" id="description" class="form-control">{{ update.description }}</textarea>
+                        </div>
+                        <input type="hidden" value="{{ update.id }}" name="id" />
+                        <button type="submit" class="form-btn">Actualizar</button>
+                    </form>
+                </div>
+                {% else %}
+                <div class='box-routines'>
+                    <form class="" method="post" action="{% url 'insert_tarea' %}">
+                        {% csrf_token %}
+                        <div>
+                            <label for="subject" class="form-label">Título</label>
+                            <input type="text" class="form-control" name="subject" id="subject" placeholder="Titulo de la tarea" aria-describedby="emailHelp" />
+                        </div>
+                        <div>
+                            <label for="description" class="form-label">Descripción</label>
+                            <textarea type="text" name="description" id="description" placeholder="Descripción de la tarea" class="form-control"></textarea>
+                        </div>
+                        <button type="submit" class="form-btn">Agregar</button>
+                    </form>
+                </div>
+                {% endif %}
+        </div>
+    </section>
+    
+{% endblock%}

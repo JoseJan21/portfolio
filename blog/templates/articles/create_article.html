@@ -1,0 +1,33 @@
+{% extends 'pagina/layout.html' %}
+
+{% block title %}
+   Crear articulos
+{% endblock %}
+    
+{% block content %}
+{% load static %}
+
+{% if messages %}
+        {% for message in messages %}
+            <div class='alert alert-warning'>
+                {{message}}
+            </div>
+        {% endfor %}
+{% endif %}
+
+
+    <div class="form-container">
+        <div class='content-title'>
+            <h2 class="title h2-center">Subir Articulo</h2>
+        </div>
+
+        <form class='contact-form' method="post" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for field in form %}
+              <p class="form-field">{{ field.label_tag }} {{ field }}</p>
+            {% endfor %}
+            <p class='info-p'>Para seleccionar más de una opción puedes mantener presionada la tecla "Ctrl" (en Windows) o "Cmd" (en Mac) mientras haces clic en las opciones que deseas seleccionar.</p> 
+            <input class="btn" type="submit" value="Publicar" />
+          </form>
+    </div>
+{% endblock%}
