@@ -42,7 +42,7 @@
                 </div>
             </a>
 
-            <a class='projecto'target='_blank' href="{% url 'generator' %}">
+            {% comment %} <a class='projecto'target='_blank' href="{% url 'generator' %}">
                 <div class="proyecto" id="proyecto">
                     <img class="image-project" src={% static 'media/image.png' %}>
                     <div class="description">
@@ -50,6 +50,18 @@
                         <p class="tecnologias">
                             Tecnologias:
                             <span>Html, Css, Python, Django</span>
+                        </p>
+                    </div>
+                </div>
+            </a> {% endcomment %}
+            <a class='projecto'target='_blank' href="https://guardianesdelbosque.vercel.app/">
+                <div class="proyecto" id="proyecto">
+                    <img class="image-project" src={% static 'media/image-guardianes.png' %}>
+                    <div class="description">
+                        <p class="titulo">Guardianes del Bosque</p>
+                        <p class="tecnologias">
+                            Tecnologias:
+                            <span>Html, Css, Python, Fast-API</span>
                         </p>
                     </div>
                 </div>
